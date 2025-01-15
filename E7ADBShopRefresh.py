@@ -10,6 +10,8 @@ import cv2
 import numpy as np
 import keyboard
 
+import random
+
 class E7Item:
     def __init__(self, image=None, price=0, count=0):
         self.image=image
@@ -114,9 +116,9 @@ class E7ADBShopRefresh:
         start_time = time.time()
         milestone = self.budget//10
         #swipe location
-        x1 = str(0.6250 * self.screenwidth)
-        y1 = str(0.6481 * self.screenheight)
-        y2 = str(0.4629 * self.screenheight)
+        x1 = str(0.6250 * self.screenwidth + random.randint(-15,5))
+        y1 = str(0.6481 * self.screenheight + random.randint(-5,15))
+        y2 = str(0.4629 * self.screenheight + random.randint(-8,15))
         #refresh loop
         while self.loop_active:
 
@@ -214,20 +216,20 @@ class E7ADBShopRefresh:
     #macro
     def clickShop(self):
         #newshop
-        x = self.screenwidth * 0.0411
-        y = self.screenheight * 0.2935
+        x = self.screenwidth * 0.0411 + random.randint(-5,5)
+        y = self.screenheight * 0.2935 + random.randint(-5,5)
         adb_process = subprocess.run([self.adb_path, 'shell', 'input', 'tap', str(x), str(y)])
         time.sleep(self.tap_sleep)
 
         #oldshop
-        x = self.screenwidth * 0.4406
-        y = self.screenheight * 0.2462
+        x = self.screenwidth * 0.4406 + random.randint(-5,5)
+        y = self.screenheight * 0.2462 + random.randint(-5,5)
         adb_process = subprocess.run([self.adb_path, 'shell', 'input', 'tap', str(x), str(y)])
         time.sleep(self.tap_sleep)
 
         #newshop
-        x = self.screenwidth * 0.0411
-        y = self.screenheight * 0.2935
+        x = self.screenwidth * 0.0411 + random.randint(-5,5)
+        y = self.screenheight * 0.2935 + random.randint(-5,5)
         adb_process = subprocess.run([self.adb_path, 'shell', 'input', 'tap', str(x), str(y)])
         time.sleep(self.tap_sleep)
 
@@ -240,22 +242,22 @@ class E7ADBShopRefresh:
         time.sleep(self.tap_sleep)
 
         #confirm
-        x = self.screenwidth * 0.5677
-        y = self.screenheight * 0.7037
+        x = self.screenwidth * 0.5677 + random.randint(-5,5)
+        y = self.screenheight * 0.7037 + random.randint(-5,5)
         adb_process = subprocess.run([self.adb_path, 'shell', 'input', 'tap', str(x), str(y)])
         time.sleep(self.tap_sleep)
         time.sleep(0.5)
     
     def clickRefresh(self):
-        x = self.screenwidth * 0.1698
-        y = self.screenheight * 0.9138
+        x = self.screenwidth * 0.1698 + random.randint(-5,5)
+        y = self.screenheight * 0.9138 + random.randint(-5,5)
         adb_process = subprocess.run([self.adb_path, 'shell', 'input', 'tap', str(x), str(y)])
         time.sleep(self.tap_sleep)
 
         if not self.loop_active: return
         #confirm
-        x = self.screenwidth * 0.5828
-        y = self.screenheight * 0.6111
+        x = self.screenwidth * 0.5828 + random.randint(-5,5)
+        y = self.screenheight * 0.6111 + random.randint(-5,5)
         adb_process = subprocess.run([self.adb_path, 'shell', 'input', 'tap', str(x), str(y)])
         time.sleep(self.tap_sleep)
 
